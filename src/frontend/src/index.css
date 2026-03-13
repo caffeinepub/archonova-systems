@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Archonova Design Tokens — OKLCH (L C H) */
+
+    /* Brand greens */
+    --brand-deep: 0.28 0.09 145;
+    --brand-dark: 0.23 0.08 145;
+    --brand-mid: 0.42 0.11 145;
+    --brand-light: 0.55 0.1 145;
+    --brand-accent: 0.66 0.1 145;
+
+    /* Surfaces */
+    --background: 0.06 0 0;
+    --surface: 0.1 0 0;
+    --surface-2: 0.13 0 0;
+
+    /* Text */
+    --foreground: 1.0 0 0;
+    --text-muted: 0.75 0 0;
+    --text-subtle: 0.46 0 0;
+
+    /* Borders */
+    --border: 0.66 0.1 145;
+    --border-subtle: 0.28 0.09 145;
+
+    /* shadcn tokens */
+    --primary: 0.42 0.11 145;
+    --primary-foreground: 1.0 0 0;
+    --secondary: 0.13 0 0;
+    --secondary-foreground: 1.0 0 0;
+    --destructive: 0.55 0.22 20;
+    --destructive-foreground: 1.0 0 0;
+    --muted: 0.13 0 0;
+    --muted-foreground: 0.75 0 0;
+    --accent: 0.66 0.1 145;
+    --accent-foreground: 0.06 0 0;
+    --popover: 0.1 0 0;
+    --popover-foreground: 1.0 0 0;
+    --card: 0.1 0 0;
+    --card-foreground: 1.0 0 0;
+    --input: 0.13 0 0;
+    --ring: 0.42 0.11 145;
+    --radius: 4px;
+
+    --chart-1: 0.66 0.1 145;
+    --chart-2: 0.55 0.1 145;
+    --chart-3: 0.42 0.11 145;
+    --chart-4: 0.28 0.09 145;
+    --chart-5: 0.75 0 0;
+
+    --sidebar: 0.08 0 0;
+    --sidebar-foreground: 1.0 0 0;
+    --sidebar-primary: 0.42 0.11 145;
+    --sidebar-primary-foreground: 1.0 0 0;
+    --sidebar-accent: 0.13 0 0;
+    --sidebar-accent-foreground: 1.0 0 0;
+    --sidebar-border: 0.28 0.09 145;
+    --sidebar-ring: 0.42 0.11 145;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+/* ──────────────── Neural Network Animation ──────────────── */
+@keyframes neural-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+@keyframes neural-float {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-8px) translateX(4px);
+  }
+  66% {
+    transform: translateY(4px) translateX(-6px);
+  }
+}
+@keyframes line-pulse {
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+@keyframes scroll-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.4;
+  }
+}
+@keyframes diagram-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes blink-cursor {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes type-in {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes chip-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(102, 163, 122, 0);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(102, 163, 122, 0.3);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease both;
+}
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.7s ease 0.15s both;
+}
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.7s ease 0.3s both;
+}
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.7s ease 0.45s both;
+}
+
+/* ──────────────── Section Utilities ──────────────── */
+.section-heading {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: #ffffff;
+  line-height: 1.2;
+}
+.section-subheading {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #b8b8b8;
+  line-height: 1.7;
+}
+.section-label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #66a37a;
+}
+
+/* ──────────────── Card Hover Effects ──────────────── */
+.card-hover {
+  transition: transform 250ms ease, box-shadow 250ms ease, background-color
+    250ms ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 24px rgba(102, 163, 122, 0.2);
+  background-color: #1e1e1e;
+}
+
+/* ──────────────── Terminal Lines ──────────────── */
+.terminal-line {
+  display: block;
+  height: 1px;
+  background: #1f6f43;
+  margin-bottom: 12px;
+  animation: terminal-appear 0.5s ease both;
+}
+@keyframes terminal-appear {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
