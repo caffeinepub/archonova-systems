@@ -75,7 +75,7 @@ export default function Contact() {
     fontFamily: "Inter, sans-serif",
     fontWeight: 500,
     fontSize: "0.8rem",
-    color: "#B8B8B8",
+    color: "#D4D4D4",
     marginBottom: "6px",
     letterSpacing: "0.02em",
   };
@@ -98,11 +98,39 @@ export default function Contact() {
         }}
       >
         <div className="max-w-3xl mx-auto text-center">
-          <p className="section-label mb-4">GET IN TOUCH</p>
-          <h1 className="section-heading mb-4">
+          <p
+            style={{
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: 600,
+              fontSize: "0.75rem",
+              color: "#66A37A",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
+            GET IN TOUCH
+          </p>
+          <h1
+            style={{
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+              color: "#ffffff",
+              lineHeight: 1.2,
+              marginBottom: "16px",
+            }}
+          >
             Schedule a Technology Consultation
           </h1>
-          <p className="section-subheading">
+          <p
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "1rem",
+              color: "#D4D4D4",
+              lineHeight: 1.7,
+            }}
+          >
             Whether you are planning cloud infrastructure, enterprise software
             development, AI automation, or technology modernization, the
             Archonova Systems team is ready to assist. Connect with our
@@ -135,7 +163,7 @@ export default function Contact() {
           style={{
             fontFamily: "Inter, sans-serif",
             fontSize: "0.95rem",
-            color: "#B8B8B8",
+            color: "#D4D4D4",
             lineHeight: 1.75,
             maxWidth: "720px",
           }}
@@ -186,7 +214,7 @@ export default function Contact() {
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: "0.9rem",
-                  color: "#B8B8B8",
+                  color: "#D4D4D4",
                   textDecoration: "none",
                   display: "flex",
                   alignItems: "center",
@@ -197,7 +225,7 @@ export default function Contact() {
                   (e.currentTarget as HTMLElement).style.color = "#66A37A";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = "#B8B8B8";
+                  (e.currentTarget as HTMLElement).style.color = "#D4D4D4";
                 }}
               >
                 <Mail size={15} style={{ color: "#66A37A", flexShrink: 0 }} />
@@ -224,7 +252,7 @@ export default function Contact() {
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: "0.9rem",
-                  color: "#B8B8B8",
+                  color: "#D4D4D4",
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
@@ -254,7 +282,7 @@ export default function Contact() {
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: "0.9rem",
-                  color: "#B8B8B8",
+                  color: "#D4D4D4",
                   lineHeight: 1.8,
                   display: "flex",
                   gap: "8px",
@@ -298,7 +326,7 @@ export default function Contact() {
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: "0.825rem",
-                  color: "#B8B8B8",
+                  color: "#D4D4D4",
                   lineHeight: 1.6,
                 }}
               >
@@ -364,7 +392,7 @@ export default function Contact() {
                   style={{
                     fontFamily: "Inter, sans-serif",
                     fontSize: "0.9rem",
-                    color: "#B8B8B8",
+                    color: "#D4D4D4",
                     lineHeight: 1.7,
                   }}
                 >
@@ -601,7 +629,7 @@ export default function Contact() {
             style={{
               fontFamily: "Inter, sans-serif",
               fontSize: "0.95rem",
-              color: "#B8B8B8",
+              color: "#D4D4D4",
               lineHeight: 1.8,
             }}
           >

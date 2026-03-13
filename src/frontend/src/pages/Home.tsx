@@ -104,16 +104,19 @@ function Section({
   bg = "#0A0A0A",
   className = "",
   style = {},
+  id,
 }: {
   children: React.ReactNode;
   bg?: string;
   className?: string;
   style?: React.CSSProperties;
+  id?: string;
 }) {
   return (
     <section
+      id={id}
       style={{ backgroundColor: bg, ...style }}
-      className={`py-24 px-6 ${className}`}
+      className={`py-8 px-6 ${className}`}
     >
       <div className="max-w-7xl mx-auto">{children}</div>
     </section>
@@ -244,7 +247,8 @@ export default function Home() {
             maxWidth: "1200px",
             margin: "0 auto",
             padding: "0 24px",
-            paddingTop: "72px",
+            paddingTop: "120px",
+            paddingBottom: "80px",
           }}
         >
           {/* Badge */}
@@ -376,7 +380,15 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        <div
+        <button
+          type="button"
+          aria-label="Scroll to content"
+          data-ocid="hero.button"
+          onClick={() => {
+            document
+              .getElementById("consulting-approach")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
           style={{
             position: "absolute",
             bottom: "32px",
@@ -387,6 +399,10 @@ export default function Home() {
             flexDirection: "column",
             alignItems: "center",
             gap: "4px",
+            cursor: "pointer",
+            background: "none",
+            border: "none",
+            padding: "8px",
           }}
         >
           <span
@@ -407,12 +423,12 @@ export default function Home() {
               animation: "scroll-bounce 2s ease-in-out infinite",
             }}
           />
-        </div>
+        </button>
       </section>
 
       {/* 2. CONSULTING APPROACH */}
-      <Section bg="#080808">
-        <div className="text-center mb-16">
+      <Section bg="#080808" id="consulting-approach">
+        <div className="text-center mb-8">
           <p className="section-label mb-3">METHODOLOGY</p>
           <h2 className="section-heading mb-5">Our Consulting Approach</h2>
           <p
@@ -545,7 +561,7 @@ export default function Home() {
 
       {/* 3. CORE TECHNOLOGY DOMAINS */}
       <Section bg="#0A0A0A">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <p className="section-label mb-3">SPECIALIZATIONS</p>
           <h2 className="section-heading mb-5">Core Technology Domains</h2>
           <p
@@ -643,7 +659,7 @@ export default function Home() {
 
       {/* 4. CLOUD ECOSYSTEMS */}
       <Section bg="#080808">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <p className="section-label mb-3">CLOUD PLATFORMS</p>
           <h2 className="section-heading mb-5">Cloud Ecosystems</h2>
           <p
@@ -1030,7 +1046,7 @@ export default function Home() {
       {/* 7. ARCO PLATFORM TEASER */}
       <section
         style={{
-          padding: "96px 24px",
+          padding: "56px 24px",
           background: "linear-gradient(135deg, #0B4F2C 0%, #0A0A0A 60%)",
           borderTop: "1px solid rgba(31,111,67,0.3)",
           borderBottom: "1px solid rgba(31,111,67,0.3)",
@@ -1210,7 +1226,7 @@ export default function Home() {
       {/* 8. CTA BANNER */}
       <section
         style={{
-          padding: "80px 24px",
+          padding: "56px 24px",
           background:
             "linear-gradient(90deg, #0E3D22 0%, #0B4F2C 50%, #0A0A0A 100%)",
         }}

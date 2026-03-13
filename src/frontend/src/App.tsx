@@ -2,8 +2,8 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import ARCOPlatform from "@/pages/ARCOPlatform";
 import AWSServices from "@/pages/AWSServices";
+import About from "@/pages/About";
 import CloudServices from "@/pages/CloudServices";
-import ComingSoon from "@/pages/ComingSoon";
 import Contact from "@/pages/Contact";
 import DataCenter from "@/pages/DataCenter";
 import GoogleCloud from "@/pages/GoogleCloud";
@@ -48,12 +48,7 @@ const homeRoute = createRoute({
 const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/about",
-  component: () => (
-    <ComingSoon
-      title="About Archonova"
-      subtitle="Our story, values, and team of technology experts."
-    />
-  ),
+  component: About,
 });
 const cloudServicesRoute = createRoute({
   getParentRoute: () => rootRoute,
