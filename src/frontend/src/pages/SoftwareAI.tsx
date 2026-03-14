@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import {
   BarChart3,
   Bot,
+  Calculator,
   Code2,
   Cpu,
   GitMerge,
@@ -17,10 +18,12 @@ function ArchDiagram({
   title,
   children,
   height = "280px",
+  fullWidth = false,
 }: {
   title: string;
   children: React.ReactNode;
   height?: string;
+  fullWidth?: boolean;
 }) {
   return (
     <div
@@ -31,7 +34,7 @@ function ArchDiagram({
         backgroundColor: "#0c120e",
         position: "relative",
         overflow: "hidden",
-        padding: "28px 32px 24px",
+        padding: fullWidth ? "36px 48px 32px" : "28px 32px 24px",
       }}
     >
       {/* Grid background */}
@@ -83,7 +86,7 @@ function ArchDiagram({
 
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* Header */}
-        <div style={{ marginBottom: "20px" }}>
+        <div style={{ marginBottom: "28px" }}>
           <span
             style={{
               fontFamily: "'JetBrains Mono', monospace",
@@ -122,18 +125,19 @@ function DiagNode({
   return (
     <div
       style={{
-        padding: "8px 14px",
+        padding: "10px 20px",
         border: `1px solid ${
           accent ? "rgba(45,138,82,0.7)" : "rgba(45,138,82,0.3)"
         }`,
         borderRadius: "6px",
         backgroundColor: accent ? "rgba(11,79,44,0.35)" : "rgba(15,26,19,0.8)",
         fontFamily: "Inter, sans-serif",
-        fontSize: "0.72rem",
+        fontSize: "0.8rem",
         color: accent ? "#66A37A" : "#8a9e94",
         fontWeight: accent ? 600 : 400,
         textAlign: "center" as const,
         whiteSpace: "nowrap" as const,
+        minWidth: "160px",
       }}
     >
       {label}
@@ -155,7 +159,7 @@ function Connector({ vertical = false }: { vertical?: boolean }) {
         <div
           style={{
             width: "1px",
-            height: "20px",
+            height: "24px",
             backgroundColor: "rgba(45,138,82,0.4)",
           }}
         />
@@ -182,7 +186,7 @@ function Connector({ vertical = false }: { vertical?: boolean }) {
     >
       <div
         style={{
-          width: "24px",
+          width: "32px",
           height: "1px",
           backgroundColor: "rgba(45,138,82,0.4)",
         }}
@@ -210,7 +214,6 @@ function ServiceCard({
   description,
   capabilities,
   ocid,
-  children,
 }: {
   index: number;
   icon: React.ReactNode;
@@ -218,7 +221,6 @@ function ServiceCard({
   description: string;
   capabilities: string[];
   ocid: string;
-  children?: React.ReactNode;
 }) {
   return (
     <div
@@ -325,7 +327,6 @@ function ServiceCard({
           display: "flex",
           flexDirection: "column" as const,
           gap: "6px",
-          marginBottom: children ? "20px" : 0,
         }}
       >
         {capabilities.map((cap) => (
@@ -348,8 +349,6 @@ function ServiceCard({
           </li>
         ))}
       </ul>
-
-      {children && <div style={{ marginTop: "8px" }}>{children}</div>}
     </div>
   );
 }
@@ -370,7 +369,6 @@ export default function SoftwareAI() {
           overflow: "hidden",
         }}
       >
-        {/* Ambient glow */}
         <div
           style={{
             position: "absolute",
@@ -623,11 +621,9 @@ export default function SoftwareAI() {
               maxWidth: "820px",
             }}
           >
-            Archonova Systems designs and builds custom enterprise software
-            platforms engineered for scalability, performance, and long-term
-            maintainability. From system architecture through full-stack
-            delivery, we serve as an engineering partner for organizations
-            building intelligent, cloud-integrated applications.
+            Archonova Systems designs and builds scalable enterprise software
+            platforms tailored to organizational workflows and modern
+            infrastructure environments.
           </p>
 
           <p
@@ -642,7 +638,7 @@ export default function SoftwareAI() {
               marginTop: "16px",
             }}
           >
-            Key capabilities:
+            Capabilities include:
           </p>
           <ul
             style={{
@@ -655,11 +651,10 @@ export default function SoftwareAI() {
             }}
           >
             {[
-              "Custom application development for enterprise environments",
-              "Microservices and distributed system architecture",
-              "API-first design and multi-platform integration",
-              "CI/CD pipelines and automated delivery workflows",
-              "Code review, quality assurance, and technical governance",
+              "custom enterprise applications",
+              "SaaS platform development",
+              "cloud-native architecture",
+              "enterprise system integrations",
             ].map((cap) => (
               <li
                 key={cap}
@@ -674,11 +669,7 @@ export default function SoftwareAI() {
                 }}
               >
                 <span
-                  style={{
-                    color: "#2d8a52",
-                    marginTop: "4px",
-                    flexShrink: 0,
-                  }}
+                  style={{ color: "#2d8a52", marginTop: "4px", flexShrink: 0 }}
                 >
                   •
                 </span>
@@ -689,7 +680,7 @@ export default function SoftwareAI() {
         </div>
       </section>
 
-      {/* ── SERVICE GRID (indexes 2–6) ── */}
+      {/* ── SERVICE GRID (6 services, 3×2) ── */}
       <section
         style={{
           padding: "0 24px 72px",
@@ -700,128 +691,211 @@ export default function SoftwareAI() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: "24px",
           }}
+          className="software-ai-grid"
         >
           <ServiceCard
             index={2}
-            ocid="software_ai.services.card.2"
+            ocid="software_ai.services.card.1"
             icon={<GitMerge size={18} />}
             title="SaaS Platform Architecture"
-            description="We design multi-tenant SaaS platforms built for enterprise scale, enabling organizations to deliver software services with high availability, flexible billing models, and secure data isolation."
+            description="Design scalable multi-tenant software platforms built for modern cloud infrastructure."
             capabilities={[
-              "Multi-tenant architecture with data isolation",
-              "Subscription and usage-based billing integration",
-              "High-availability and auto-scaling infrastructure",
-              "Tenant onboarding and provisioning automation",
-              "SLA-aligned uptime and performance monitoring",
+              "cloud-native application architecture",
+              "microservices design",
+              "scalable backend systems",
+              "API-first architecture",
             ]}
           />
           <ServiceCard
             index={3}
-            ocid="software_ai.services.card.3"
+            ocid="software_ai.services.card.2"
             icon={<Puzzle size={18} />}
             title="API Integrations"
-            description="Archonova Systems architects and implements API ecosystems that connect enterprise platforms, third-party services, and internal systems into unified, reliable data flows."
+            description="Connect enterprise applications and cloud systems through robust API integrations."
             capabilities={[
-              "RESTful and GraphQL API development",
-              "Enterprise system integration (ERP, CRM, ITSM)",
-              "API gateway design and rate limiting",
-              "Authentication, authorization, and OAuth 2.0 flows",
-              "API documentation, versioning, and lifecycle management",
+              "REST API development",
+              "enterprise system integrations",
+              "third-party platform connectivity",
+              "secure API authentication",
             ]}
           />
-
-          {/* Workflow Automation — with AI Workflow Pipeline diagram */}
           <ServiceCard
             index={4}
-            ocid="software_ai.services.card.4"
+            ocid="software_ai.services.card.3"
             icon={<Zap size={18} />}
             title="Workflow Automation"
-            description="We implement AI-powered workflow automation systems that eliminate manual processes, accelerate operational throughput, and embed intelligent decision-making into core business workflows."
+            description="Automate business processes using intelligent automation frameworks."
             capabilities={[
-              "Business process automation with AI decision layers",
-              "Robotic process automation (RPA) integration",
-              "Event-driven workflow orchestration",
-              "Automated approvals, routing, and escalation logic",
-              "Real-time monitoring and operational dashboards",
+              "process automation pipelines",
+              "AI-powered workflows",
+              "operational task automation",
+              "decision automation systems",
             ]}
-          >
-            <ArchDiagram title="AI Workflow Pipeline" height="260px">
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 0,
-                }}
-              >
-                <DiagNode label="Business Data" accent />
-                <Connector vertical />
-                <DiagNode label="AI Model" />
-                <Connector vertical />
-                <DiagNode label="Automation Engine" accent />
-                <Connector vertical />
-                <DiagNode label="Operational Workflow" />
-                <Connector vertical />
-                <DiagNode label="Business Insights" accent />
-              </div>
-            </ArchDiagram>
-          </ServiceCard>
-
-          {/* Machine Learning Engineering — with ML Architecture diagram */}
+          />
           <ServiceCard
             index={5}
-            ocid="software_ai.services.card.5"
+            ocid="software_ai.services.card.4"
             icon={<Cpu size={18} />}
             title="Machine Learning Engineering"
-            description="Our machine learning engineering practice designs, trains, and deploys production-grade ML models that generate predictive intelligence and enable data-driven automation at scale."
+            description="Design and deploy machine learning systems for predictive analytics and intelligent automation."
             capabilities={[
-              "Data pipeline engineering and feature engineering",
-              "Model training, validation, and performance benchmarking",
-              "ML model deployment to cloud and edge environments",
-              "Continuous model monitoring and retraining pipelines",
-              "Integration with enterprise data warehouses and BI tools",
+              "model development",
+              "training pipelines",
+              "model deployment",
+              "inference systems",
             ]}
-          >
-            <ArchDiagram title="Machine Learning Architecture" height="260px">
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 0,
-                }}
-              >
-                <DiagNode label="Data Sources" accent />
-                <Connector vertical />
-                <DiagNode label="Data Processing" />
-                <Connector vertical />
-                <DiagNode label="Machine Learning Model" accent />
-                <Connector vertical />
-                <DiagNode label="Prediction Engine" />
-                <Connector vertical />
-                <DiagNode label="Analytics Dashboard" accent />
-              </div>
-            </ArchDiagram>
-          </ServiceCard>
-
+          />
           <ServiceCard
             index={6}
-            ocid="software_ai.services.card.6"
+            ocid="software_ai.services.card.5"
             icon={<BarChart3 size={18} />}
             title="AI Analytics Systems"
-            description="Archonova Systems builds AI-powered analytics platforms that surface actionable intelligence from complex enterprise data, enabling leadership teams to make informed decisions faster."
+            description="Develop data intelligence platforms that transform operational data into insights."
             capabilities={[
-              "Real-time and batch analytics architecture",
-              "Natural language querying and AI-assisted reporting",
-              "Anomaly detection and predictive forecasting",
-              "Dashboard design for executive and operational audiences",
-              "Integration with cloud data platforms (BigQuery, Redshift, Synapse)",
+              "predictive analytics",
+              "real-time dashboards",
+              "business intelligence platforms",
+              "data pipeline architecture",
+            ]}
+          />
+          <ServiceCard
+            index={7}
+            ocid="software_ai.services.card.6"
+            icon={<Calculator size={18} />}
+            title="Tally Customization & Integration"
+            description="Archonova Systems provides advanced Tally customization and integration services to extend accounting systems into complete business management platforms."
+            capabilities={[
+              "custom Tally modules",
+              "inventory management customization",
+              "automated reporting systems",
+              "integration with ERP and external applications",
+              "API integration with cloud systems",
             ]}
           />
         </div>
+      </section>
+
+      {/* ── STANDALONE DIAGRAM: AI Workflow Pipeline ── */}
+      <section
+        data-ocid="software_ai.workflow_diagram.section"
+        style={{
+          padding: "0 24px 56px",
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <div style={{ marginBottom: "24px" }}>
+          <h2
+            style={{
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: 700,
+              fontSize: "1.4rem",
+              color: "#ffffff",
+              marginBottom: "8px",
+            }}
+          >
+            AI Workflow Pipeline
+          </h2>
+          <p
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "0.9rem",
+              color: "#9ca3af",
+              lineHeight: 1.6,
+            }}
+          >
+            Intelligent automation pipelines that transform business data into
+            operational outcomes through AI-driven decision layers.
+          </p>
+        </div>
+        <ArchDiagram title="AI Workflow Pipeline" height="320px" fullWidth>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexWrap: "wrap" as const,
+              gap: 0,
+            }}
+          >
+            <DiagNode label="Business Data" accent />
+            <Connector />
+            <DiagNode label="Data Ingestion Layer" />
+            <Connector />
+            <DiagNode label="AI / ML Model" accent />
+            <Connector />
+            <DiagNode label="Automation Engine" />
+            <Connector />
+            <DiagNode label="Operational Workflow" accent />
+            <Connector />
+            <DiagNode label="Business Insights" />
+          </div>
+        </ArchDiagram>
+      </section>
+
+      {/* ── STANDALONE DIAGRAM: Machine Learning Architecture ── */}
+      <section
+        data-ocid="software_ai.ml_diagram.section"
+        style={{
+          padding: "0 24px 80px",
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <div style={{ marginBottom: "24px" }}>
+          <h2
+            style={{
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: 700,
+              fontSize: "1.4rem",
+              color: "#ffffff",
+              marginBottom: "8px",
+            }}
+          >
+            Machine Learning Architecture
+          </h2>
+          <p
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "0.9rem",
+              color: "#9ca3af",
+              lineHeight: 1.6,
+            }}
+          >
+            End-to-end ML architecture from raw data sources through model
+            training, deployment, and inference at enterprise scale.
+          </p>
+        </div>
+        <ArchDiagram
+          title="Machine Learning Architecture"
+          height="320px"
+          fullWidth
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexWrap: "wrap" as const,
+              gap: 0,
+            }}
+          >
+            <DiagNode label="Data Sources" accent />
+            <Connector />
+            <DiagNode label="Data Processing" />
+            <Connector />
+            <DiagNode label="Feature Engineering" accent />
+            <Connector />
+            <DiagNode label="ML Model Training" />
+            <Connector />
+            <DiagNode label="Model Deployment" accent />
+            <Connector />
+            <DiagNode label="Analytics Dashboard" />
+          </div>
+        </ArchDiagram>
       </section>
 
       {/* ── CTA SECTION ── */}
@@ -965,6 +1039,20 @@ export default function SoftwareAI() {
           </div>
         </div>
       </section>
+
+      {/* Responsive grid override */}
+      <style>{`
+        @media (max-width: 900px) {
+          .software-ai-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .software-ai-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </>
   );
 }

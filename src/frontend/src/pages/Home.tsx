@@ -116,7 +116,7 @@ function Section({
     <section
       id={id}
       style={{ backgroundColor: bg, ...style }}
-      className={`py-8 px-6 ${className}`}
+      className={`py-12 px-6 ${className}`}
     >
       <div className="max-w-7xl mx-auto">{children}</div>
     </section>
@@ -428,12 +428,14 @@ export default function Home() {
 
       {/* 2. CONSULTING APPROACH */}
       <Section bg="#080808" id="consulting-approach">
-        <div className="text-center mb-8">
+        <div className="text-center mb-10">
           <p className="section-label mb-3">METHODOLOGY</p>
-          <h2 className="section-heading mb-5">Our Consulting Approach</h2>
+          <h2 className="section-heading mb-5" style={{ fontSize: "2rem" }}>
+            Our Consulting Approach
+          </h2>
           <p
             className="section-subheading mx-auto"
-            style={{ maxWidth: "680px" }}
+            style={{ maxWidth: "680px", fontSize: "1rem" }}
           >
             We begin every engagement with a structured methodology designed to
             align technology strategy with business outcomes. Our
@@ -473,7 +475,7 @@ export default function Home() {
               data-ocid={`approach.item.${i + 1}`}
               style={{
                 position: "relative",
-                padding: "32px 28px",
+                padding: "40px 36px",
                 backgroundColor: "#111111",
                 border: "1px solid rgba(102,163,122,0.1)",
                 borderRight: i < 3 ? "none" : "1px solid rgba(102,163,122,0.1)",
@@ -498,8 +500,8 @@ export default function Home() {
               )}
               <div
                 style={{
-                  width: "40px",
-                  height: "40px",
+                  width: "52px",
+                  height: "52px",
                   borderRadius: "50%",
                   border: "1px solid rgba(102,163,122,0.5)",
                   backgroundColor: "rgba(31,111,67,0.15)",
@@ -513,7 +515,7 @@ export default function Home() {
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 700,
-                    fontSize: "0.8rem",
+                    fontSize: "0.9rem",
                     color: "#66A37A",
                   }}
                 >
@@ -524,7 +526,7 @@ export default function Home() {
                 style={{
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 600,
-                  fontSize: "1.05rem",
+                  fontSize: "1.2rem",
                   color: "#ffffff",
                   marginBottom: "12px",
                 }}
@@ -534,7 +536,7 @@ export default function Home() {
               <p
                 style={{
                   fontFamily: "Inter, sans-serif",
-                  fontSize: "0.85rem",
+                  fontSize: "0.95rem",
                   color: "#B8B8B8",
                   lineHeight: 1.7,
                 }}
@@ -561,12 +563,14 @@ export default function Home() {
 
       {/* 3. CORE TECHNOLOGY DOMAINS */}
       <Section bg="#0A0A0A">
-        <div className="text-center mb-8">
+        <div className="text-center mb-10">
           <p className="section-label mb-3">SPECIALIZATIONS</p>
-          <h2 className="section-heading mb-5">Core Technology Domains</h2>
+          <h2 className="section-heading mb-5" style={{ fontSize: "2rem" }}>
+            Core Technology Domains
+          </h2>
           <p
             className="section-subheading mx-auto"
-            style={{ maxWidth: "600px" }}
+            style={{ maxWidth: "600px", fontSize: "1rem" }}
           >
             Archonova delivers specialized expertise across the critical domains
             driving modern enterprise transformation.
@@ -576,25 +580,25 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
             {
-              icon: <Cloud size={24} style={{ color: "#66A37A" }} />,
+              icon: <Cloud size={28} style={{ color: "#66A37A" }} />,
               title: "Cloud Infrastructure",
               desc: "Design, migrate, and operate enterprise cloud environments across hybrid and multi-cloud architectures. We deliver infrastructure that scales with your business.",
               href: "/cloud-services",
             },
             {
-              icon: <FileText size={24} style={{ color: "#66A37A" }} />,
+              icon: <FileText size={28} style={{ color: "#66A37A" }} />,
               title: "Enterprise Licensing",
               desc: "Navigate complex software licensing landscapes to reduce cost, ensure compliance, and maximize the value of your technology investments.",
               href: "/licensing-consulting",
             },
             {
-              icon: <Code2 size={24} style={{ color: "#66A37A" }} />,
+              icon: <Code2 size={28} style={{ color: "#66A37A" }} />,
               title: "Software Engineering",
               desc: "Build robust, scalable enterprise applications using modern development practices and cloud-native architectures designed for longevity.",
               href: "/software-ai",
             },
             {
-              icon: <Brain size={24} style={{ color: "#66A37A" }} />,
+              icon: <Brain size={28} style={{ color: "#66A37A" }} />,
               title: "Artificial Intelligence",
               desc: "Implement AI and machine learning solutions that automate processes, surface actionable insights, and drive intelligent decision-making.",
               href: "/software-ai",
@@ -607,7 +611,7 @@ export default function Home() {
               className="card-hover"
               style={{
                 display: "block",
-                padding: "32px 28px",
+                padding: "40px 36px",
                 backgroundColor: "#111111",
                 border: "1px solid rgba(102,163,122,0.1)",
                 borderLeft: "3px solid #1F6F43",
@@ -621,7 +625,7 @@ export default function Home() {
                 style={{
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 600,
-                  fontSize: "1.1rem",
+                  fontSize: "1.25rem",
                   color: "#ffffff",
                   marginBottom: "12px",
                 }}
@@ -631,7 +635,7 @@ export default function Home() {
               <p
                 style={{
                   fontFamily: "Inter, sans-serif",
-                  fontSize: "0.875rem",
+                  fontSize: "0.975rem",
                   color: "#B8B8B8",
                   lineHeight: 1.7,
                 }}
@@ -647,7 +651,7 @@ export default function Home() {
                   color: "#66A37A",
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 600,
-                  fontSize: "0.8rem",
+                  fontSize: "0.9rem",
                 }}
               >
                 Learn more <ArrowRight size={14} />
@@ -659,12 +663,14 @@ export default function Home() {
 
       {/* 4. CLOUD ECOSYSTEMS */}
       <Section bg="#080808">
-        <div className="text-center mb-8">
+        <div className="text-center mb-10">
           <p className="section-label mb-3">CLOUD PLATFORMS</p>
-          <h2 className="section-heading mb-5">Cloud Ecosystems</h2>
+          <h2 className="section-heading mb-5" style={{ fontSize: "2rem" }}>
+            Cloud Ecosystems
+          </h2>
           <p
             className="section-subheading mx-auto"
-            style={{ maxWidth: "620px" }}
+            style={{ maxWidth: "620px", fontSize: "1rem" }}
           >
             We architect and operate enterprise environments across the world's
             leading cloud platforms, bringing deep technical expertise to every
@@ -672,7 +678,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
               name: "Microsoft Cloud",
@@ -704,8 +710,11 @@ export default function Home() {
                 overflow: "hidden",
               }}
             >
-              <DiagramPlaceholder label="Cloud Architecture Diagram" />
-              <div style={{ padding: "24px" }}>
+              <DiagramPlaceholder
+                label="Cloud Architecture Diagram"
+                height="240px"
+              />
+              <div style={{ padding: "28px" }}>
                 <span
                   style={{
                     display: "inline-block",
@@ -714,7 +723,7 @@ export default function Home() {
                     border: "1px solid rgba(102,163,122,0.2)",
                     borderRadius: "100px",
                     fontFamily: "Inter, sans-serif",
-                    fontSize: "0.7rem",
+                    fontSize: "0.78rem",
                     color: "#66A37A",
                     marginBottom: "12px",
                   }}
@@ -725,7 +734,7 @@ export default function Home() {
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 600,
-                    fontSize: "1rem",
+                    fontSize: "1.15rem",
                     color: "#ffffff",
                     marginBottom: "10px",
                   }}
@@ -735,7 +744,7 @@ export default function Home() {
                 <p
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: "0.85rem",
+                    fontSize: "0.95rem",
                     color: "#B8B8B8",
                     lineHeight: 1.65,
                   }}
@@ -744,7 +753,7 @@ export default function Home() {
                 </p>
                 <Link
                   to={cloud.href as "/"}
-                  data-ocid={`cloud.item.${i + 1}`}
+                  data-ocid={`cloud.link.${i + 1}`}
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -752,7 +761,7 @@ export default function Home() {
                     marginTop: "16px",
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 600,
-                    fontSize: "0.78rem",
+                    fontSize: "0.88rem",
                     color: "#66A37A",
                     textDecoration: "none",
                     transition: "gap 200ms",

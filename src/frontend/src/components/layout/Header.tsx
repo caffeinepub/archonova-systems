@@ -25,12 +25,8 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
   }, []);
 
   return (
@@ -48,60 +44,91 @@ export default function Header() {
           ? "1px solid rgba(31,111,67,0.4)"
           : "1px solid transparent",
         transition:
-          "background-color 300ms ease, backdrop-filter 300ms ease, border-color 300ms ease",
+          "background-color 300ms, backdrop-filter 300ms, border-color 300ms",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "0 24px",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         {/* Logo */}
         <Link
           to="/"
-          className="flex flex-col shrink-0"
           data-ocid="nav.link"
-          style={{ textDecoration: "none", lineHeight: 1, gap: "2px" }}
+          style={{
+            textDecoration: "none",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "8px",
+            flexShrink: 0,
+          }}
         >
-          <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
-            <span
-              style={{
-                fontFamily: "Poppins, sans-serif",
-                fontWeight: 700,
-                fontSize: "16px",
-                color: "#ffffff",
-                letterSpacing: "0.04em",
-              }}
-            >
-              Archonova
-            </span>
-            <span
-              style={{
-                fontFamily: "Poppins, sans-serif",
-                fontWeight: 600,
-                fontSize: "14px",
-                color: "#1F6F43",
-                letterSpacing: "0.04em",
-              }}
-            >
-              Systems
-            </span>
-          </div>
-          <span
+          <div
             style={{
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 400,
-              fontSize: "8px",
-              color: "#ffffff",
-              letterSpacing: "0.06em",
-              opacity: 0.85,
-              marginTop: "1px",
+              display: "flex",
+              flexDirection: "column",
+              lineHeight: 1,
+              gap: "2px",
             }}
           >
-            intelligence that keeps businesses aligned
-          </span>
+            <div
+              style={{ display: "flex", alignItems: "baseline", gap: "4px" }}
+            >
+              <span
+                style={{
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: 700,
+                  fontSize: "16px",
+                  color: "#ffffff",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                Archonova
+              </span>
+              <span
+                style={{
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: 600,
+                  fontSize: "14px",
+                  color: "#1F6F43",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                Systems
+              </span>
+            </div>
+            <span
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 400,
+                fontSize: "8px",
+                color: "#ffffff",
+                letterSpacing: "0.06em",
+                opacity: 0.85,
+                marginTop: "1px",
+              }}
+            >
+              intelligence that keeps businesses aligned
+            </span>
+          </div>
         </Link>
+
+        {/* Spacer */}
+        <div style={{ flex: 1 }} />
 
         {/* Desktop Nav */}
         <nav
           className="hidden lg:flex items-center gap-1"
           aria-label="Main navigation"
+          style={{ marginLeft: "48px" }}
         >
           {navLinks.map((link) => {
             const isActive = currentPath === link.href;
@@ -146,7 +173,7 @@ export default function Header() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle navigation"
           data-ocid="nav.toggle"
-          style={{ color: "#ffffff" }}
+          style={{ color: "#ffffff", marginLeft: "auto" }}
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
