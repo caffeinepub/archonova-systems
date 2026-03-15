@@ -817,6 +817,34 @@ export default function MicrosoftCloud() {
         </ArchDiagram>
       </section>
 
+      {/* ── EMAIL & COLLABORATION SECURITY ── */}
+      <section
+        style={{ padding: "0 24px 40px", maxWidth: "1200px", margin: "0 auto" }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+            gap: "24px",
+          }}
+        >
+          <ServiceCard
+            index={7}
+            ocid="microsoft_cloud.services.card.7"
+            icon={<Lock size={18} />}
+            title="Email & Collaboration Security"
+            description="Enterprise email security, compliance, and collaboration infrastructure for Microsoft environments — ensuring secure, compliant, and resilient communication platforms."
+            capabilities={[
+              "Hybrid Email Setup",
+              "Email Security Gateway",
+              "Spam Filtering & Threat Protection",
+              "Email Archiving & Compliance",
+              "Email Backup Solutions",
+            ]}
+          />
+        </div>
+      </section>
+
       {/* ── CTA SECTION ── */}
       <section
         style={{

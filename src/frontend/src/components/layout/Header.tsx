@@ -13,6 +13,7 @@ const navLinks = [
   { label: "Software & AI", href: "/software-ai" },
   { label: "Managed IT", href: "/managed-services" },
   { label: "Licensing", href: "/licensing-consulting" },
+  { label: "Training", href: "/training" },
   { label: "ARCO", href: "/arco" },
   { label: "Contact", href: "/contact" },
 ];

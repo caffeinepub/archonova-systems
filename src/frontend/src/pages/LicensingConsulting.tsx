@@ -862,6 +862,183 @@ export default function LicensingConsulting() {
         </ArchDiagram>
       </section>
 
+      {/* ── SOFTWARE LICENSING PORTFOLIO ── */}
+      <section
+        style={{ padding: "0 24px 72px", maxWidth: "1200px", margin: "0 auto" }}
+      >
+        <div
+          data-ocid="licensing.portfolio.card"
+          style={{
+            backgroundColor: "#0f1a13",
+            border: "1px solid rgba(45,138,82,0.45)",
+            borderLeft: "4px solid #2d8a52",
+            borderRadius: "12px",
+            padding: "40px",
+          }}
+        >
+          <div style={{ marginBottom: "32px" }}>
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: "0.65rem",
+                color: "rgba(45,138,82,0.6)",
+                letterSpacing: "0.1em",
+                display: "block",
+                marginBottom: "8px",
+              }}
+            >
+              06 — Full Portfolio
+            </span>
+            <h2
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: 700,
+                fontSize: "1.4rem",
+                color: "#ffffff",
+                lineHeight: 1.25,
+                margin: 0,
+              }}
+            >
+              Software Licensing Portfolio
+            </h2>
+            <p
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: "0.9rem",
+                color: "#9ca3af",
+                lineHeight: 1.65,
+                marginTop: "10px",
+              }}
+            >
+              Archonova Systems provides advisory and procurement services
+              across the full spectrum of enterprise software licensing,
+              covering Microsoft, Google, VMware, Oracle, and major productivity
+              platforms.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+              gap: "40px",
+            }}
+          >
+            {/* Microsoft Column */}
+            <div>
+              <p
+                style={{
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: 600,
+                  fontSize: "0.85rem",
+                  color: "#66A37A",
+                  letterSpacing: "0.06em",
+                  marginBottom: "16px",
+                  textTransform: "uppercase" as const,
+                }}
+              >
+                Microsoft Licensing
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {[
+                  "Microsoft 365 (M365) Licensing",
+                  "Office 365 (O365) Licensing",
+                  "Microsoft Azure Consumption Licensing",
+                  "Microsoft Enterprise Agreement (EA)",
+                  "Microsoft CSP Licensing",
+                  "Microsoft Select Plus Licensing",
+                  "Windows Server Licensing",
+                  "Windows Desktop OS Licensing",
+                  "Microsoft SQL Server Licensing",
+                  "Microsoft Exchange Server Licensing",
+                  "Microsoft SharePoint Licensing",
+                  "Microsoft Dynamics Licensing",
+                  "Power Platform Licensing (Power BI, Power Apps, Power Automate)",
+                  "Microsoft Defender Security Licensing",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "0.85rem",
+                      color: "#9ca3af",
+                      lineHeight: 1.7,
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "8px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "#2d8a52",
+                        flexShrink: 0,
+                        marginTop: "2px",
+                      }}
+                    >
+                      ›
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Other Vendors Column */}
+            <div>
+              <p
+                style={{
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: 600,
+                  fontSize: "0.85rem",
+                  color: "#66A37A",
+                  letterSpacing: "0.06em",
+                  marginBottom: "16px",
+                  textTransform: "uppercase" as const,
+                }}
+              >
+                Other Vendor Licensing
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {[
+                  "Google Workspace Licensing",
+                  "Google Cloud Platform Licensing",
+                  "VMware Licensing",
+                  "RedHat Enterprise Linux Licensing",
+                  "Oracle Database Licensing",
+                  "Adobe Creative Cloud Licensing",
+                  "Autodesk Licensing",
+                  "SAP Licensing",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "0.85rem",
+                      color: "#9ca3af",
+                      lineHeight: 1.7,
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "8px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "#2d8a52",
+                        flexShrink: 0,
+                        marginTop: "2px",
+                      }}
+                    >
+                      ›
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section
         style={{

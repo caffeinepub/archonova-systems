@@ -783,6 +783,63 @@ export default function CloudServices() {
         </ArchDiagram>
       </section>
 
+      {/* ── NEW SERVICES GRID (8–10) ── */}
+      <section
+        style={{ padding: "0 24px 40px", maxWidth: "1200px", margin: "0 auto" }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+            gap: "24px",
+          }}
+        >
+          <ServiceCard
+            index={8}
+            icon={<Cloud size={18} />}
+            title="Cloud Infrastructure Services"
+            description="Archonova Systems designs and deploys comprehensive cloud infrastructure environments across public, hybrid, and multi-cloud platforms, covering compute, storage, networking, and advanced cloud-native services."
+            capabilities={[
+              "Virtual Machines provisioning",
+              "Cloud Storage Solutions",
+              "Cloud Networking",
+              "Database as a Service (DBaaS)",
+              "Kubernetes / Container Services",
+              "Serverless Computing",
+              "AI / ML Cloud Services",
+              "GPU Computing Infrastructure",
+            ]}
+          />
+          <ServiceCard
+            index={9}
+            icon={<MoveRight size={18} />}
+            title="Cloud Migration Services"
+            description="End-to-end cloud migration planning and execution for applications, databases, email systems, and infrastructure — ensuring continuity, minimal disruption, and optimized post-migration performance."
+            capabilities={[
+              "Email Migration (Exchange / Google / IMAP)",
+              "Application Migration",
+              "Database Migration",
+              "Virtual Machine Migration",
+              "Lift and Shift Migration",
+              "Application Replatforming",
+              "Application Modernization",
+            ]}
+          />
+          <ServiceCard
+            index={10}
+            icon={<Settings size={18} />}
+            title="Cloud Governance & Capacity Planning"
+            description="Strategic cloud governance, capacity planning, and architecture design to ensure scalable, compliant cloud operations aligned with organizational growth and regulatory requirements."
+            capabilities={[
+              "Capacity Planning",
+              "Cloud Governance Framework Design",
+              "Cost Optimization Consulting",
+              "Multi-Cloud Strategy",
+            ]}
+          />
+        </div>
+      </section>
+
       {/* ── CTA SECTION ── */}
       <section
         style={{

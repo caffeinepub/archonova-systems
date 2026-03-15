@@ -778,6 +778,64 @@ export default function SoftwareAI() {
         </div>
       </section>
 
+      {/* ── ADDITIONAL SERVICE CARDS ── */}
+      <section
+        style={{ padding: "0 24px 40px", maxWidth: "1200px", margin: "0 auto" }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+            gap: "24px",
+          }}
+        >
+          <ServiceCard
+            index={8}
+            ocid="software_ai.services.card.8"
+            icon={<GitMerge size={18} />}
+            title="DevOps & Automation Engineering"
+            description="Building automated deployment pipelines, containerized infrastructure, and DevSecOps frameworks for enterprise software delivery — accelerating release cycles and reducing operational risk."
+            capabilities={[
+              "CI/CD Pipeline Implementation",
+              "Infrastructure as Code (IaC)",
+              "Docker Containerization",
+              "Kubernetes Orchestration",
+              "DevSecOps Implementation",
+              "Monitoring & Logging Setup",
+            ]}
+          />
+          <ServiceCard
+            index={9}
+            ocid="software_ai.services.card.9"
+            icon={<Puzzle size={18} />}
+            title="SaaS Application Deployment"
+            description="Deploying and configuring enterprise SaaS platforms for HR, ERP, CRM, and operational management — ensuring seamless integration, data migration, and user adoption."
+            capabilities={[
+              "ERP SaaS Deployment",
+              "HRMS SaaS Deployment",
+              "CRM SaaS Deployment",
+              "Learning Management System Deployment",
+              "Document Management System",
+              "Attendance & Payroll SaaS",
+            ]}
+          />
+          <ServiceCard
+            index={10}
+            ocid="software_ai.services.card.10"
+            icon={<BarChart3 size={18} />}
+            title="Data & Analytics Engineering"
+            description="Data infrastructure design, analytics platform deployment, and business intelligence solutions that transform enterprise data into actionable operational insight."
+            capabilities={[
+              "Data Warehouse Setup",
+              "Data Lake Architecture",
+              "Big Data Analytics",
+              "AI / ML Deployment",
+              "Business Intelligence (Power BI, Tableau, Looker)",
+            ]}
+          />
+        </div>
+      </section>
+
       {/* ── STANDALONE DIAGRAM: AI Workflow Pipeline ── */}
       <section
         data-ocid="software_ai.workflow_diagram.section"

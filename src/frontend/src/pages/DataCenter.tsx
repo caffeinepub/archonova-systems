@@ -765,6 +765,10 @@ export default function DataCenter() {
               "Unified identity and access management across environments",
               "Workload placement and cost optimization strategy",
               "Centralized monitoring and operations management",
+              "On-Premise + Cloud Integration",
+              "VPN / ExpressRoute Setup",
+              "Hybrid Identity (AD + Azure AD)",
+              "Hybrid Email Architecture",
             ]}
           />
         </div>

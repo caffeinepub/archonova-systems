@@ -787,6 +787,65 @@ export default function ManagedServices() {
         </div>
       </section>
 
+      {/* ── ADDITIONAL SERVICE CARDS ── */}
+      <section
+        style={{ padding: "0 24px 40px", maxWidth: "1200px", margin: "0 auto" }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+            gap: "24px",
+          }}
+        >
+          <ServiceCard
+            index={6}
+            ocid="managed_services.services.card.6"
+            icon={<Shield size={18} />}
+            title="Cloud Security & Compliance"
+            description="Proactive cloud security posture management, identity controls, and compliance framework implementation to protect enterprise environments against threats and regulatory exposure."
+            capabilities={[
+              "Identity & Access Management (IAM)",
+              "Multi-Factor Authentication (MFA)",
+              "Conditional Access Policies",
+              "Endpoint Security",
+              "Cloud Security Posture Management",
+              "Data Loss Prevention (DLP)",
+              "SIEM Deployment",
+              "Security Monitoring",
+              "Compliance Framework Implementation (ISO, SOC)",
+            ]}
+          />
+          <ServiceCard
+            index={7}
+            ocid="managed_services.services.card.7"
+            icon={<RefreshCw size={18} />}
+            title="Backup & Disaster Recovery"
+            description="Comprehensive backup automation and disaster recovery planning to protect enterprise data and operations from data loss, ransomware, and unplanned infrastructure failures."
+            capabilities={[
+              "Cloud Backup Solutions",
+              "Disaster Recovery Planning",
+              "DR Site Deployment",
+              "Backup Automation",
+              "Data Replication",
+              "Ransomware Protection Backup",
+            ]}
+          />
+          <ServiceCard
+            index={8}
+            ocid="managed_services.services.card.8"
+            icon={<Activity size={18} />}
+            title="Incident Management & Scaling"
+            description="Structured incident response, resource auto-scaling, and SLA management to maintain operational reliability and enterprise-grade service continuity across all managed environments."
+            capabilities={[
+              "Incident Management",
+              "Resource Auto Scaling",
+              "SLA Management",
+            ]}
+          />
+        </div>
+      </section>
+
       {/* ── CTA SECTION ── */}
       <section
         style={{

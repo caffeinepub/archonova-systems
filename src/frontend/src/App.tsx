@@ -12,6 +12,7 @@ import LicensingConsulting from "@/pages/LicensingConsulting";
 import ManagedServices from "@/pages/ManagedServices";
 import MicrosoftCloud from "@/pages/MicrosoftCloud";
 import SoftwareAI from "@/pages/SoftwareAI";
+import Training from "@/pages/Training";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -90,6 +91,11 @@ const licensingRoute = createRoute({
   path: "/licensing-consulting",
   component: LicensingConsulting,
 });
+const trainingRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/training",
+  component: Training,
+});
 const arcoRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/arco",
@@ -112,6 +118,7 @@ const routeTree = rootRoute.addChildren([
   softwareAIRoute,
   managedRoute,
   licensingRoute,
+  trainingRoute,
   arcoRoute,
   contactRoute,
 ]);

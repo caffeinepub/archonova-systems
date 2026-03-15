@@ -824,6 +824,36 @@ export default function GoogleCloud() {
         </div>
       </section>
 
+      {/* ── EMAIL & COLLABORATION SERVICES ── */}
+      <section
+        style={{ padding: "0 24px 40px", maxWidth: "1200px", margin: "0 auto" }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+            gap: "24px",
+          }}
+        >
+          <ServiceCard
+            index={7}
+            ocid="google_cloud.services.card.7"
+            icon={<Mail size={18} />}
+            title="Email & Collaboration Services"
+            description="Google-native email collaboration, security, and compliance services for enterprise environments — extending Google Workspace with enterprise-grade protection and governance."
+            capabilities={[
+              "Google Workspace advanced configuration",
+              "Hybrid Email Setup",
+              "Email Security Gateway",
+              "Spam Filtering & Threat Protection",
+              "Email Archiving & Compliance",
+              "Email Backup Solutions",
+              "Collaboration Tools Deployment (Google Meet / Chat)",
+            ]}
+          />
+        </div>
+      </section>
+
       {/* ── CTA SECTION ── */}
       <section
         style={{

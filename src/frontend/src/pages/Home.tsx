@@ -124,74 +124,756 @@ function Section({
 }
 
 /* ──────────────────────────────────────────────
-   Diagram Placeholder
+   Shared diagram node style helper
 ────────────────────────────────────────────── */
-function DiagramPlaceholder({
-  label,
-  height = "200px",
-}: { label: string; height?: string }) {
+const nodeStyle: React.CSSProperties = {
+  backgroundColor: "#111",
+  border: "1px solid rgba(102,163,122,0.35)",
+  borderRadius: "3px",
+  padding: "5px 10px",
+  fontFamily: "Poppins, sans-serif",
+  fontSize: "0.68rem",
+  fontWeight: 600,
+  color: "#ffffff",
+  whiteSpace: "nowrap" as const,
+  textAlign: "center" as const,
+};
+
+const dashedNodeStyle: React.CSSProperties = {
+  ...nodeStyle,
+  border: "1px dashed rgba(102,163,122,0.5)",
+  color: "#B8B8B8",
+};
+
+const diagramContainerStyle: React.CSSProperties = {
+  backgroundColor: "#0f0f0f",
+  border: "1px solid rgba(31,111,67,0.4)",
+  borderRadius: "4px",
+  position: "relative",
+  overflow: "hidden",
+  padding: "20px 16px 16px",
+};
+
+const diagramTitleStyle: React.CSSProperties = {
+  position: "absolute",
+  top: "10px",
+  left: "12px",
+  fontFamily: "Poppins, sans-serif",
+  fontWeight: 600,
+  fontSize: "0.6rem",
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.1em",
+  color: "#66A37A",
+  zIndex: 2,
+};
+
+function DiagramGridSvg({ id }: { id: string }) {
   return (
-    <div
+    <svg
       style={{
-        minHeight: height,
-        border: "1px dashed rgba(31,111,67,0.5)",
-        borderRadius: "4px",
-        backgroundColor: "#0f0f0f",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "12px",
-        position: "relative",
-        overflow: "hidden",
-        animation: "diagram-pulse 3s ease-in-out infinite",
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        opacity: 0.06,
+        zIndex: 0,
       }}
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="presentation"
     >
-      {/* Grid lines */}
+      <defs>
+        <pattern id={id} width="40" height="40" patternUnits="userSpaceOnUse">
+          <path
+            d="M 40 0 L 0 0 0 40"
+            fill="none"
+            stroke="#66A37A"
+            strokeWidth="0.5"
+          />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill={`url(#${id})`} />
+    </svg>
+  );
+}
+
+/* ──────────────────────────────────────────────
+   Microsoft Architecture Diagram
+────────────────────────────────────────────── */
+function MicrosoftArchDiagram() {
+  return (
+    <div style={{ ...diagramContainerStyle, minHeight: "280px" }}>
+      <DiagramGridSvg id="grid-ms" />
+      <span style={diagramTitleStyle}>Microsoft Azure Architecture</span>
+
+      {/* SVG connector lines */}
       <svg
         style={{
           position: "absolute",
           inset: 0,
           width: "100%",
           height: "100%",
-          opacity: 0.08,
+          zIndex: 1,
+          pointerEvents: "none",
         }}
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         role="presentation"
       >
         <defs>
-          <pattern
-            id="grid"
-            width="40"
-            height="40"
-            patternUnits="userSpaceOnUse"
+          <marker
+            id="arrow-ms"
+            markerWidth="6"
+            markerHeight="6"
+            refX="3"
+            refY="3"
+            orient="auto"
           >
-            <path
-              d="M 40 0 L 0 0 0 40"
-              fill="none"
-              stroke="#66A37A"
-              strokeWidth="0.5"
-            />
-          </pattern>
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(102,163,122,0.6)" />
+          </marker>
         </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
+        {/* Layer 1→2 */}
+        <line
+          x1="50%"
+          y1="16%"
+          x2="28%"
+          y2="27%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-ms)"
+        />
+        <line
+          x1="50%"
+          y1="16%"
+          x2="72%"
+          y2="27%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-ms)"
+        />
+        {/* Layer 2→3 */}
+        <line
+          x1="28%"
+          y1="37%"
+          x2="50%"
+          y2="47%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-ms)"
+        />
+        <line
+          x1="72%"
+          y1="37%"
+          x2="50%"
+          y2="47%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-ms)"
+        />
+        {/* Layer 3→4 */}
+        <line
+          x1="50%"
+          y1="57%"
+          x2="22%"
+          y2="68%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-ms)"
+        />
+        <line
+          x1="50%"
+          y1="57%"
+          x2="50%"
+          y2="68%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-ms)"
+        />
+        <line
+          x1="50%"
+          y1="57%"
+          x2="78%"
+          y2="68%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-ms)"
+        />
+        {/* Layer 4→5 */}
+        <line
+          x1="50%"
+          y1="79%"
+          x2="50%"
+          y2="88%"
+          stroke="rgba(102,163,122,0.4)"
+          strokeWidth="1.5"
+          strokeDasharray="4,3"
+          markerEnd="url(#arrow-ms)"
+        />
       </svg>
-      <Server size={28} style={{ color: "#1F6F43", opacity: 0.6 }} />
-      <span
+
+      {/* Layout */}
+      <div
         style={{
-          fontFamily: "Poppins, sans-serif",
-          fontWeight: 600,
-          fontSize: "0.75rem",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "#3D8B5E",
-          opacity: 0.8,
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          paddingTop: "18px",
         }}
       >
-        {label}
-      </span>
+        {/* L1 */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={nodeStyle}>Users / Endpoints</span>
+        </div>
+        {/* L2 */}
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <span style={nodeStyle}>Azure Active Directory</span>
+          <span style={nodeStyle}>Microsoft 365</span>
+        </div>
+        {/* L3 */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={nodeStyle}>Azure Virtual Network</span>
+        </div>
+        {/* L4 */}
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <span style={nodeStyle}>Azure VMs</span>
+          <span style={nodeStyle}>Azure SQL</span>
+          <span style={nodeStyle}>Blob Storage</span>
+        </div>
+        {/* L5 */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={dashedNodeStyle}>On-Premises (Hybrid)</span>
+        </div>
+      </div>
     </div>
+  );
+}
+
+/* ──────────────────────────────────────────────
+   Google Cloud Architecture Diagram
+────────────────────────────────────────────── */
+function GoogleArchDiagram() {
+  return (
+    <div style={{ ...diagramContainerStyle, minHeight: "280px" }}>
+      <DiagramGridSvg id="grid-gcp" />
+      <span style={diagramTitleStyle}>Google Cloud Platform Architecture</span>
+
+      <svg
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="presentation"
+      >
+        <defs>
+          <marker
+            id="arrow-gcp"
+            markerWidth="6"
+            markerHeight="6"
+            refX="3"
+            refY="3"
+            orient="auto"
+          >
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(102,163,122,0.6)" />
+          </marker>
+        </defs>
+        <line
+          x1="50%"
+          y1="16%"
+          x2="50%"
+          y2="26%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-gcp)"
+        />
+        <line
+          x1="50%"
+          y1="36%"
+          x2="28%"
+          y2="47%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-gcp)"
+        />
+        <line
+          x1="50%"
+          y1="36%"
+          x2="72%"
+          y2="47%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-gcp)"
+        />
+        <line
+          x1="28%"
+          y1="57%"
+          x2="22%"
+          y2="68%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-gcp)"
+        />
+        <line
+          x1="28%"
+          y1="57%"
+          x2="50%"
+          y2="68%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-gcp)"
+        />
+        <line
+          x1="72%"
+          y1="57%"
+          x2="78%"
+          y2="68%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-gcp)"
+        />
+        <line
+          x1="50%"
+          y1="78%"
+          x2="50%"
+          y2="88%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-gcp)"
+        />
+      </svg>
+
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          paddingTop: "18px",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={nodeStyle}>Users</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={nodeStyle}>Cloud Load Balancer</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <span style={nodeStyle}>GKE Cluster</span>
+          <span style={nodeStyle}>Cloud Run</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <span style={nodeStyle}>Cloud SQL</span>
+          <span style={nodeStyle}>BigQuery</span>
+          <span style={nodeStyle}>Vertex AI</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={nodeStyle}>Cloud Storage</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ──────────────────────────────────────────────
+   AWS Architecture Diagram
+────────────────────────────────────────────── */
+function AWSArchDiagram() {
+  return (
+    <div style={{ ...diagramContainerStyle, minHeight: "280px" }}>
+      <DiagramGridSvg id="grid-aws" />
+      <span style={diagramTitleStyle}>Amazon Web Services Architecture</span>
+
+      <svg
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="presentation"
+      >
+        <defs>
+          <marker
+            id="arrow-aws"
+            markerWidth="6"
+            markerHeight="6"
+            refX="3"
+            refY="3"
+            orient="auto"
+          >
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(102,163,122,0.6)" />
+          </marker>
+        </defs>
+        <line
+          x1="50%"
+          y1="16%"
+          x2="50%"
+          y2="26%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-aws)"
+        />
+        <line
+          x1="50%"
+          y1="36%"
+          x2="50%"
+          y2="46%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-aws)"
+        />
+        <line
+          x1="50%"
+          y1="56%"
+          x2="22%"
+          y2="67%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-aws)"
+        />
+        <line
+          x1="50%"
+          y1="56%"
+          x2="50%"
+          y2="67%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-aws)"
+        />
+        <line
+          x1="50%"
+          y1="56%"
+          x2="78%"
+          y2="67%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-aws)"
+        />
+        <line
+          x1="50%"
+          y1="77%"
+          x2="50%"
+          y2="87%"
+          stroke="rgba(102,163,122,0.5)"
+          strokeWidth="1.5"
+          markerEnd="url(#arrow-aws)"
+        />
+      </svg>
+
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          paddingTop: "18px",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={nodeStyle}>Users</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={nodeStyle}>Route 53 / CloudFront</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={nodeStyle}>Application Load Balancer</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <span style={nodeStyle}>EC2 Auto Scaling</span>
+          <span style={nodeStyle}>RDS Multi-AZ</span>
+          <span style={nodeStyle}>Lambda</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <span style={nodeStyle}>S3 / Glacier</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ──────────────────────────────────────────────
+   Hybrid Infrastructure Architecture Diagram
+────────────────────────────────────────────── */
+function HybridArchDiagram() {
+  return (
+    <div style={{ ...diagramContainerStyle, minHeight: "340px" }}>
+      <DiagramGridSvg id="grid-hybrid" />
+      <span style={diagramTitleStyle}>Hybrid Infrastructure Architecture</span>
+
+      <svg
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="presentation"
+      >
+        <defs>
+          <marker
+            id="arrow-hybrid"
+            markerWidth="6"
+            markerHeight="6"
+            refX="3"
+            refY="3"
+            orient="auto"
+          >
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(102,163,122,0.6)" />
+          </marker>
+          <marker
+            id="arrow-hybrid-rev"
+            markerWidth="6"
+            markerHeight="6"
+            refX="3"
+            refY="3"
+            orient="auto-start-reverse"
+          >
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(102,163,122,0.6)" />
+          </marker>
+        </defs>
+        {/* Left zone → center */}
+        <line
+          x1="33%"
+          y1="50%"
+          x2="44%"
+          y2="50%"
+          stroke="rgba(102,163,122,0.6)"
+          strokeWidth="2"
+          markerEnd="url(#arrow-hybrid)"
+          markerStart="url(#arrow-hybrid-rev)"
+        />
+        {/* center → right zone */}
+        <line
+          x1="56%"
+          y1="50%"
+          x2="67%"
+          y2="50%"
+          stroke="rgba(102,163,122,0.6)"
+          strokeWidth="2"
+          markerEnd="url(#arrow-hybrid)"
+          markerStart="url(#arrow-hybrid-rev)"
+        />
+      </svg>
+
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+          paddingTop: "22px",
+          height: "calc(100% - 22px)",
+        }}
+      >
+        {/* Main 3-column row */}
+        <div
+          style={{
+            display: "flex",
+            gap: "8px",
+            alignItems: "stretch",
+            flex: 1,
+          }}
+        >
+          {/* Left zone */}
+          <div
+            style={{
+              flex: 1,
+              border: "1px solid rgba(102,163,122,0.3)",
+              borderRadius: "4px",
+              padding: "12px 8px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "8px",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontSize: "0.58rem",
+                fontWeight: 700,
+                color: "#66A37A",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                textAlign: "center",
+                marginBottom: "4px",
+              }}
+            >
+              On-Premises Data Center
+            </span>
+            <span style={nodeStyle}>Servers</span>
+            <span style={nodeStyle}>Storage</span>
+            <span style={nodeStyle}>Network</span>
+          </div>
+
+          {/* Center connector */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              minWidth: "80px",
+              gap: "6px",
+            }}
+          >
+            <span
+              style={{
+                ...nodeStyle,
+                backgroundColor: "rgba(31,111,67,0.2)",
+                border: "1px solid rgba(102,163,122,0.6)",
+                fontSize: "0.62rem",
+                padding: "8px 10px",
+                textAlign: "center",
+                whiteSpace: "normal",
+                lineHeight: 1.3,
+              }}
+            >
+              VPN /\nExpressRoute
+            </span>
+          </div>
+
+          {/* Right zone */}
+          <div
+            style={{
+              flex: 1,
+              border: "1px solid rgba(102,163,122,0.3)",
+              borderRadius: "4px",
+              padding: "12px 8px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "8px",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontSize: "0.58rem",
+                fontWeight: 700,
+                color: "#66A37A",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                textAlign: "center",
+                marginBottom: "4px",
+              }}
+            >
+              Cloud Environments
+            </span>
+            <span style={nodeStyle}>Azure</span>
+            <span style={nodeStyle}>AWS</span>
+            <span style={nodeStyle}>GCP</span>
+          </div>
+        </div>
+
+        {/* Bottom spanning bar */}
+        <div
+          style={{
+            backgroundColor: "rgba(31,111,67,0.18)",
+            border: "1px solid rgba(102,163,122,0.3)",
+            borderRadius: "3px",
+            padding: "8px",
+            textAlign: "center",
+            fontFamily: "Poppins, sans-serif",
+            fontSize: "0.65rem",
+            fontWeight: 600,
+            color: "#66A37A",
+            letterSpacing: "0.06em",
+          }}
+        >
+          Unified Management &amp; Monitoring Plane
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ──────────────────────────────────────────────
+   Stats Strip
+────────────────────────────────────────────── */
+function StatsStrip() {
+  const stats = [
+    { value: "13+", label: "Technology Platforms Supported" },
+    { value: "Cloud · On-Prem · Hybrid", label: "Deployment Models" },
+    { value: "Microsoft · Google · AWS", label: "Cloud Ecosystem Coverage" },
+    { value: "End-to-End", label: "From Assessment to Operations" },
+  ];
+
+  return (
+    <section
+      style={{
+        backgroundColor: "#060606",
+        padding: "32px 24px",
+        borderTop: "1px solid rgba(31,111,67,0.15)",
+        borderBottom: "1px solid rgba(31,111,67,0.15)",
+      }}
+    >
+      <div className="max-w-7xl mx-auto">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "0",
+          }}
+          className="md:grid-cols-4"
+        >
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              style={{
+                padding: "16px 24px",
+                textAlign: "center",
+                borderRight:
+                  i < stats.length - 1
+                    ? "1px solid rgba(102,163,122,0.12)"
+                    : "none",
+                borderBottom:
+                  i < 2 ? "1px solid rgba(102,163,122,0.12)" : "none",
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: 700,
+                  fontSize: "clamp(0.85rem, 2vw, 1.15rem)",
+                  color: "#ffffff",
+                  marginBottom: "6px",
+                  lineHeight: 1.2,
+                }}
+              >
+                {stat.value}
+              </div>
+              <div
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "0.75rem",
+                  color: "#666666",
+                  lineHeight: 1.4,
+                }}
+              >
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -482,7 +1164,6 @@ export default function Home() {
                 cursor: "default",
               }}
             >
-              {/* Arrow connector (desktop) */}
               {i < 3 && (
                 <div
                   style={{
@@ -543,7 +1224,6 @@ export default function Home() {
               >
                 {step.desc}
               </p>
-              {/* Green left accent */}
               <div
                 style={{
                   position: "absolute",
@@ -560,6 +1240,9 @@ export default function Home() {
           ))}
         </div>
       </Section>
+
+      {/* STATS STRIP */}
+      <StatsStrip />
 
       {/* 3. CORE TECHNOLOGY DOMAINS */}
       <Section bg="#0A0A0A">
@@ -682,21 +1365,27 @@ export default function Home() {
           {[
             {
               name: "Microsoft Cloud",
-              desc: "Azure infrastructure, Microsoft 365, Dynamics 365, and seamless hybrid cloud integration for enterprise productivity and scale.",
+              desc: "Azure infrastructure, Microsoft 365, Dynamics 365, and seamless hybrid cloud integration for enterprise productivity and scale. We manage licensing, identity, security, and hybrid connectivity across the full Microsoft ecosystem.",
               href: "/microsoft-cloud",
               badge: "Azure · M365 · Dynamics 365",
+              tags: ["Azure IaaS/PaaS", "M365 & Dynamics", "Hybrid Identity"],
+              diagram: <MicrosoftArchDiagram />,
             },
             {
               name: "Google Cloud",
-              desc: "GCP compute, BigQuery analytics, Vertex AI, and managed Kubernetes workloads for data-driven organizations.",
+              desc: "GCP compute, BigQuery analytics, Vertex AI, and managed Kubernetes workloads for data-driven organizations. We deploy and operate GCP environments with a focus on analytics, AI, and containerized application architecture.",
               href: "/google-cloud",
               badge: "GCP · BigQuery · Vertex AI",
+              tags: ["GKE & Cloud Run", "BigQuery Analytics", "Vertex AI"],
+              diagram: <GoogleArchDiagram />,
             },
             {
               name: "Amazon Web Services",
-              desc: "EC2, S3, RDS, Lambda, and end-to-end AWS Well-Architected deployments engineered for reliability and performance.",
+              desc: "EC2, S3, RDS, Lambda, and end-to-end AWS Well-Architected deployments engineered for reliability and performance. We architect scalable, resilient AWS environments with full observability and cost optimization built in.",
               href: "/aws-services",
               badge: "EC2 · Lambda · RDS · S3",
+              tags: ["EC2 & Lambda", "RDS & S3", "Well-Architected"],
+              diagram: <AWSArchDiagram />,
             },
           ].map((cloud, i) => (
             <div
@@ -710,10 +1399,7 @@ export default function Home() {
                 overflow: "hidden",
               }}
             >
-              <DiagramPlaceholder
-                label="Cloud Architecture Diagram"
-                height="240px"
-              />
+              {cloud.diagram}
               <div style={{ padding: "28px" }}>
                 <span
                   style={{
@@ -744,13 +1430,40 @@ export default function Home() {
                 <p
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: "0.95rem",
+                    fontSize: "0.9rem",
                     color: "#B8B8B8",
                     lineHeight: 1.65,
+                    marginBottom: "14px",
                   }}
                 >
                   {cloud.desc}
                 </p>
+                {/* Capability tags */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "6px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  {cloud.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        padding: "3px 9px",
+                        backgroundColor: "rgba(31,111,67,0.1)",
+                        border: "1px solid rgba(102,163,122,0.2)",
+                        borderRadius: "100px",
+                        fontFamily: "Inter, sans-serif",
+                        fontSize: "0.72rem",
+                        color: "#66A37A",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
                 <Link
                   to={cloud.href as "/"}
                   data-ocid={`cloud.link.${i + 1}`}
@@ -758,7 +1471,6 @@ export default function Home() {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "6px",
-                    marginTop: "16px",
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 600,
                     fontSize: "0.88rem",
@@ -780,7 +1492,9 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <p className="section-label mb-4">INFRASTRUCTURE</p>
-            <h2 className="section-heading mb-6">Data Center Infrastructure</h2>
+            <h2 className="section-heading mb-6" style={{ color: "#ffffff" }}>
+              Data Center Infrastructure
+            </h2>
             <p
               style={{
                 fontFamily: "Inter, sans-serif",
@@ -802,7 +1516,7 @@ export default function Home() {
                 fontSize: "0.95rem",
                 color: "#B8B8B8",
                 lineHeight: 1.8,
-                marginBottom: "32px",
+                marginBottom: "20px",
               }}
             >
               Our infrastructure engagements encompass network architecture,
@@ -810,6 +1524,46 @@ export default function Home() {
               operational management — built to enterprise standards from day
               one.
             </p>
+            {/* Capability list */}
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: "0 0 28px 0",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              {[
+                "Private cloud and bare-metal server provisioning",
+                "Network architecture, firewall, and VPN design",
+                "Disaster recovery planning and backup infrastructure",
+              ].map((item) => (
+                <li
+                  key={item}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "10px",
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: "0.92rem",
+                    color: "#B8B8B8",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  <Server
+                    size={14}
+                    style={{
+                      color: "#1F6F43",
+                      marginTop: "3px",
+                      flexShrink: 0,
+                    }}
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
             <Link
               to="/data-center"
               data-ocid="datacenter.primary_button"
@@ -841,10 +1595,7 @@ export default function Home() {
             </Link>
           </div>
           <div>
-            <DiagramPlaceholder
-              label="Hybrid Infrastructure Architecture Diagram"
-              height="320px"
-            />
+            <HybridArchDiagram />
           </div>
         </div>
       </Section>
@@ -854,7 +1605,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <p className="section-label mb-4">ENGINEERING</p>
-            <h2 className="section-heading mb-6">
+            <h2 className="section-heading mb-6" style={{ color: "#ffffff" }}>
               Software &amp; AI Engineering
             </h2>
             <p
@@ -1063,7 +1814,6 @@ export default function Home() {
           overflow: "hidden",
         }}
       >
-        {/* Decorative background */}
         <div
           style={{
             position: "absolute",
@@ -1074,7 +1824,6 @@ export default function Home() {
           }}
         />
         <div className="max-w-4xl mx-auto relative" style={{ zIndex: 1 }}>
-          {/* Badge */}
           <div
             style={{
               display: "inline-flex",
@@ -1133,7 +1882,6 @@ export default function Home() {
             on-premises environments.
           </p>
 
-          {/* Capability pills */}
           <div
             style={{
               display: "flex",
