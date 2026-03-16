@@ -21,8 +21,28 @@ import {
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient();
+
+function TawkToWidget() {
+  useEffect(() => {
+    const s1 = document.createElement("script");
+    const s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = "https://embed.tawk.to/69b78f83a60d671c396b51aa/1jjqgh74k";
+    s1.charset = "UTF-8";
+    s1.setAttribute("crossorigin", "*");
+    if (s0?.parentNode) {
+      s0?.parentNode?.insertBefore(s1, s0);
+    }
+    return () => {
+      // cleanup if needed
+      if (s1.parentNode) s1.parentNode.removeChild(s1);
+    };
+  }, []);
+  return null;
+}
 
 function RootLayout() {
   return (
@@ -30,6 +50,7 @@ function RootLayout() {
       className="min-h-screen flex flex-col"
       style={{ backgroundColor: "#0A0A0A" }}
     >
+      <TawkToWidget />
       <Header />
       <main className="flex-1">
         <Outlet />

@@ -705,7 +705,37 @@ export default function GoogleCloud() {
               "Distribution group and alias configuration",
               "Post-migration validation and support",
             ]}
-          />
+          >
+            {/* Embedded Email Migration Architecture Diagram */}
+            <div data-ocid="google_cloud.email_migration_diagram.section">
+              <ArchDiagram title="Email Migration Architecture" height="auto">
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 0,
+                  }}
+                >
+                  <DiagNode
+                    label="Source Mail Systems (Exchange / IMAP / Legacy)"
+                    accent
+                  />
+                  <Connector vertical />
+                  <DiagNode label="DNS Cutover & MX Records" />
+                  <Connector vertical />
+                  <DiagNode label="Gmail Migration Tool" />
+                  <Connector vertical />
+                  <DiagNode
+                    label="Google Workspace (Gmail + Calendar + Contacts)"
+                    accent
+                  />
+                  <Connector vertical />
+                  <DiagNode label="Post-Migration Validation" />
+                </div>
+              </ArchDiagram>
+            </div>
+          </ServiceCard>
 
           {/* Card 03: Kubernetes Infrastructure */}
           <ServiceCard
@@ -721,7 +751,33 @@ export default function GoogleCloud() {
               "Network policy and ingress controller setup",
               "Cluster monitoring and logging integration",
             ]}
-          />
+          >
+            {/* Embedded GKE Kubernetes Architecture Diagram */}
+            <div data-ocid="google_cloud.kubernetes_diagram.section">
+              <ArchDiagram title="GKE Kubernetes Architecture" height="auto">
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 0,
+                  }}
+                >
+                  <DiagNode label="Developer Workload" accent />
+                  <Connector vertical />
+                  <DiagNode label="Container Registry (Artifact Registry)" />
+                  <Connector vertical />
+                  <DiagNode label="GKE Control Plane" accent />
+                  <Connector vertical />
+                  <DiagNode label="Node Pool (Autoscaling)" />
+                  <Connector vertical />
+                  <DiagNode label="Pods & Services" />
+                  <Connector vertical />
+                  <DiagNode label="Cloud Monitoring" accent />
+                </div>
+              </ArchDiagram>
+            </div>
+          </ServiceCard>
 
           {/* Card 04: Containerized Applications — with embedded diagram */}
           <ServiceCard
@@ -780,7 +836,31 @@ export default function GoogleCloud() {
               "Environment promotion and release management",
               "Operational runbook and incident workflow automation",
             ]}
-          />
+          >
+            {/* Embedded Google Cloud DevOps Pipeline Diagram */}
+            <div data-ocid="google_cloud.devops_diagram.section">
+              <ArchDiagram title="Google Cloud DevOps Pipeline" height="auto">
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 0,
+                  }}
+                >
+                  <DiagNode label="Source Repository" accent />
+                  <Connector vertical />
+                  <DiagNode label="Cloud Build (CI)" />
+                  <Connector vertical />
+                  <DiagNode label="Artifact Registry" />
+                  <Connector vertical />
+                  <DiagNode label="Cloud Deploy (CD)" accent />
+                  <Connector vertical />
+                  <DiagNode label="Production Environment" accent />
+                </div>
+              </ArchDiagram>
+            </div>
+          </ServiceCard>
 
           {/* Card 06: Analytics Infrastructure — with embedded diagram */}
           <ServiceCard
