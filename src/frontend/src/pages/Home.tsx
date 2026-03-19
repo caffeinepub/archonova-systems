@@ -1,3 +1,4 @@
+import { ClientsPartners } from "@/components/ClientsPartners";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -1107,6 +1108,157 @@ export default function Home() {
           />
         </button>
       </section>
+
+      {/* TRUST SECTION */}
+      <section
+        style={{
+          background: "#0B0B0B",
+          padding: "40px 24px",
+          borderTop: "1px solid rgba(31,111,67,0.15)",
+          borderBottom: "1px solid rgba(31,111,67,0.15)",
+        }}
+      >
+        <div
+          style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}
+        >
+          {/* Headline */}
+          <p
+            style={{
+              fontFamily: "Poppins, sans-serif",
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              color: "#66A37A",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              marginBottom: "20px",
+            }}
+          >
+            Trusted Across the World&apos;s Leading Cloud Platforms
+          </p>
+
+          {/* Logo Strip */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: "16px 32px",
+              marginBottom: "20px",
+              animation: "fadeInUp 0.8s ease forwards",
+            }}
+          >
+            {[
+              { name: "Microsoft", color: "#00A4EF" },
+              { name: "AWS", color: "#FF9900" },
+              { name: "Google Cloud", color: "#4285F4" },
+              { name: "VMware", color: "#607078" },
+              { name: "Red Hat", color: "#EE0000" },
+              { name: "Kubernetes", color: "#326CE5" },
+            ].map((logo) => (
+              <div
+                key={logo.name}
+                style={{
+                  padding: "8px 20px",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: "6px",
+                  background: "rgba(255,255,255,0.03)",
+                  cursor: "default",
+                  transition: "all 0.25s ease",
+                  filter: "grayscale(100%) opacity(0.6)",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.filter = "grayscale(0%) opacity(1)";
+                  el.style.borderColor = logo.color;
+                  el.style.transform = "scale(1.06)";
+                  el.style.boxShadow = `0 0 12px ${logo.color}33`;
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.filter = "grayscale(100%) opacity(0.6)";
+                  el.style.borderColor = "rgba(255,255,255,0.1)";
+                  el.style.transform = "scale(1)";
+                  el.style.boxShadow = "none";
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "Poppins, sans-serif",
+                    fontSize: "0.8rem",
+                    fontWeight: 600,
+                    color: "#ffffff",
+                    letterSpacing: "0.05em",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {logo.name}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Mission Statement */}
+          <p
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "0.82rem",
+              color: "#a0a0a0",
+              maxWidth: "640px",
+              margin: "0 auto 30px",
+              lineHeight: 1.6,
+            }}
+          >
+            Archonova helps enterprises design, optimize, and scale modern cloud
+            infrastructure through intelligent automation and strategic
+            consulting.
+          </p>
+
+          {/* Metrics Strip */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+              gap: "16px",
+              maxWidth: "700px",
+              margin: "0 auto",
+            }}
+          >
+            {[
+              { value: "50+", label: "Enterprise Projects" },
+              { value: "15+", label: "Cloud Technologies" },
+              { value: "20+", label: "Certified Engineers" },
+              { value: "99.99%", label: "Infrastructure Reliability" },
+            ].map((stat) => (
+              <div key={stat.label} style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    fontFamily: "Poppins, sans-serif",
+                    fontSize: "1.6rem",
+                    fontWeight: 700,
+                    color: "#1F6F43",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {stat.value}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: "0.7rem",
+                    color: "#888888",
+                    marginTop: "4px",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ClientsPartners />
 
       {/* 2. CONSULTING APPROACH */}
       <Section bg="#080808" id="consulting-approach">

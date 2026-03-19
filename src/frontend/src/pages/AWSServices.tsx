@@ -797,7 +797,41 @@ export default function AWSServices() {
               "S3 Glacier and Intelligent-Tiering for cost optimization",
               "Storage access controls, encryption, and compliance configuration",
             ]}
-          />
+          >
+            <div data-ocid="aws_services.storage_diagram.section">
+              <ArchDiagram title="AWS Storage Tiers Architecture" height="auto">
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 0,
+                  }}
+                >
+                  <DiagNode label="Application Layer" accent />
+                  <Connector vertical />
+                  <DiagNode label="Amazon S3 (Object Storage)" accent />
+                  <Connector vertical />
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "12px",
+                      justifyContent: "center",
+                      flexWrap: "wrap" as const,
+                    }}
+                  >
+                    <DiagNode label="Amazon EBS (Block Storage)" />
+                    <DiagNode label="Amazon EFS (Shared FS)" />
+                  </div>
+                  <Connector vertical />
+                  <DiagNode
+                    label="S3 Glacier (Archive / Cost Optimization)"
+                    accent
+                  />
+                </div>
+              </ArchDiagram>
+            </div>
+          </ServiceCard>
 
           {/* Card 05: Infrastructure Automation */}
           <ServiceCard

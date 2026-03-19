@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import {
   Building2,
+  Cpu,
   HardDrive,
   Layers,
   MoveRight,
@@ -207,6 +208,7 @@ function ServiceCard({
   index,
   icon,
   title,
+  subtitle,
   description,
   capabilities,
   ocid,
@@ -214,6 +216,7 @@ function ServiceCard({
   index: number;
   icon: React.ReactNode;
   title: string;
+  subtitle?: string;
   description: string;
   capabilities: string[];
   ocid: string;
@@ -289,6 +292,22 @@ function ServiceCard({
       >
         {title}
       </h3>
+
+      {subtitle && (
+        <p
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "0.78rem",
+            color: "#4a7c5e",
+            fontWeight: 500,
+            fontStyle: "italic",
+            marginBottom: "10px",
+            marginTop: "-4px",
+          }}
+        >
+          {subtitle}
+        </p>
+      )}
 
       <p
         style={{
@@ -682,7 +701,7 @@ export default function DataCenter() {
         </div>
       </section>
 
-      {/* ── SERVICE GRID (indexes 2–6) ── */}
+      {/* ── SERVICE GRID (indexes 2–7) ── */}
       <section
         style={{
           padding: "0 24px 48px",
@@ -769,6 +788,25 @@ export default function DataCenter() {
               "VPN / ExpressRoute Setup",
               "Hybrid Identity (AD + Azure AD)",
               "Hybrid Email Architecture",
+            ]}
+          />
+          <ServiceCard
+            index={7}
+            ocid="data_center.services.card.7"
+            icon={<Cpu size={18} />}
+            title="GPU Infrastructure & AI Compute"
+            subtitle="Powering AI, ML, and High-Performance Workloads"
+            description="Modern enterprises require high-performance computing to power AI, machine learning, and data-intensive applications. Archonova Systems provides GPU-based servers and scalable cloud instances that enable organizations to efficiently train models, run inference workloads, and process large datasets. Our solutions are designed for flexibility, performance, and cost optimization across both cloud and on-premise environments."
+            capabilities={[
+              "GPU-based cloud instances for AI/ML workloads",
+              "Dedicated GPU server provisioning (on-premise and hosted)",
+              "Multi-GPU and high-performance computing (HPC) setup",
+              "AI model training and inference infrastructure",
+              "Kubernetes and containerized GPU workload orchestration",
+              "GPU virtualization and resource optimization",
+              "Integration with AWS, Azure, and GCP GPU services",
+              "High-speed storage and network optimization for compute workloads",
+              "Cost optimization and usage monitoring for GPU environments",
             ]}
           />
         </div>
